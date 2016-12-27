@@ -1,4 +1,4 @@
-System.register(["angular2/core"], function(exports_1, context_1) {
+System.register(["angular2/core", "./model/pelicula"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,48 @@ System.register(["angular2/core"], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, pelicula_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (pelicula_1_1) {
+                pelicula_1 = pelicula_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.titulo = "Películas con Angular 2";
+                    this.mostrarDatos = false;
+                    this.pelicula = new pelicula_1.Pelicula(1, "Batman v Superman", "Zack Sninder", 2016);
+                    this.peliculas = [
+                        new pelicula_1.Pelicula(1, "Batman v Superman", "Zack Sninder", 2016),
+                        new pelicula_1.Pelicula(2, "La verdad duele", "Will Smith", 2016),
+                        new pelicula_1.Pelicula(3, "El Señor de los Anillos", "Desconocido", 2004),
+                        new pelicula_1.Pelicula(4, "Una historia real", "El de super salidos", 2015),
+                        new pelicula_1.Pelicula(5, "Tierra y Libertad", "Uno bueno", 2004)
+                    ];
+                    this.debug();
                 }
+                AppComponent.prototype.onShowHide = function (value) {
+                    this.mostrarDatos = value;
+                };
+                AppComponent.prototype.debug = function (titulo) {
+                    if (titulo === void 0) { titulo = null; }
+                    if (titulo != null) {
+                        console.log(this.pelicula.titulo);
+                    }
+                    else {
+                        console.log(this.pelicula);
+                    }
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "mi-app",
-                        template: "<h1>Hola mundo desde Angular 2 !!</h1>"
+                        templateUrl: "app/view/peliculas.html",
+                        styleUrls: ["../assets/css/styles.css"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
