@@ -14,8 +14,7 @@ System.register(["../model/pelicula"], function(exports_1, context_1) {
                 new pelicula_1.Pelicula(2, "La verdad duele", "Will Smith", 2016),
                 new pelicula_1.Pelicula(3, "El Señor de los Anillos", "Desconocido", 2004),
                 new pelicula_1.Pelicula(4, "Una historia real", "El de super salidos", 2015),
-                new pelicula_1.Pelicula(5, "Tierra y Libertad", "Uno bueno", 2004),
-                new pelicula_1.Pelicula(6, "Con 2 kahuamas", "No se sabe", 2004)
+                new pelicula_1.Pelicula(5, "Tierra y Libertad", "Uno bueno", 2004)
             ]);
         }
     }
