@@ -1,0 +1,12 @@
+<h2>Crear película</h2>
+
+<p>
+	<input type="text" #titulo />
+</p>
+<p>
+	<input type="text" #director />
+</p>
+<p>
+	<input type="text" #anio />
+</p>
+<input type="submit" name="Crear pelíucla" (click)="onCrearPelicula(titulo.value, director.value, anio.value)" />
