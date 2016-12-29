@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
+import {OnInit} from "angular2/core";
 import {Pelicula} from "../model/pelicula";
-import {Router} from "angular2/router";
+import {Router, RouteParams} from "angular2/router";
 import {PeliculasService} from "../services/peliculas.service";
 
 @Component({
@@ -8,9 +9,14 @@ import {PeliculasService} from "../services/peliculas.service";
 	providers: [PeliculasService]	
 })
 
-export class CrearPeliculaComponent{
+export class CrearPeliculaComponent implements OnInit {
 
-	constructor(private _peliculasService:PeliculasService, private _router: Router) {
+	public TituloPelicula = "";
+
+	constructor(private _peliculasService:PeliculasService, 
+				private _router: Router,
+				private _routeParams: RouteParams
+				) {
 
 	}
 	
@@ -27,3 +33,8 @@ export class CrearPeliculaComponent{
 		this._router.navigate(["Peliculas"]);
 	}
 
+
+	ngOnInit():any{
+		this.TituloPelicula = this._routeParams.get("titulo");
+	}
+}

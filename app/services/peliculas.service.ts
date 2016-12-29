@@ -14,4 +14,3 @@ export class PeliculasService{
 		Promise.resolve(PELICULAS).then((peliculas: Pelicula[]) => peliculas.push(pelicula));
 	}
 }
-}

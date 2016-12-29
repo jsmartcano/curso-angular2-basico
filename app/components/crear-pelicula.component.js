@@ -28,9 +28,11 @@ System.register(["angular2/core", "../model/pelicula", "angular2/router", "../se
             }],
         execute: function() {
             CrearPeliculaComponent = (function () {
-                function CrearPeliculaComponent(_peliculasService, _router) {
+                function CrearPeliculaComponent(_peliculasService, _router, _routeParams) {
                     this._peliculasService = _peliculasService;
                     this._router = _router;
+                    this._routeParams = _routeParams;
+                    this.TituloPelicula = "";
                 }
                 CrearPeliculaComponent.prototype.onCrearPelicula = function (titulo, director, anio) {
                     var id = this._peliculasService.getPeliculas().length;
@@ -38,12 +40,15 @@ System.register(["angular2/core", "../model/pelicula", "angular2/router", "../se
                     this._peliculasService.insertPelicula(pelicula);
                     this._router.navigate(["Peliculas"]);
                 };
+                CrearPeliculaComponent.prototype.ngOnInit = function () {
+                    this.TituloPelicula = this._routeParams.get("titulo");
+                };
                 CrearPeliculaComponent = __decorate([
                     core_1.Component({
                         templateUrl: "app/view/crear-pelicula.html",
                         providers: [peliculas_service_1.PeliculasService]
                     }), 
-                    __metadata('design:paramtypes', [peliculas_service_1.PeliculasService, router_1.Router])
+                    __metadata('design:paramtypes', [peliculas_service_1.PeliculasService, router_1.Router, router_1.RouteParams])
                 ], CrearPeliculaComponent);
                 return CrearPeliculaComponent;
             }());
